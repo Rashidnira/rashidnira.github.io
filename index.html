@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Mohotarema Rashid — Ph.D. candidate in Information Science at the University of North Texas. Research on financial misinformation, LLM fact-checking, and LLM trading agents.">
+<meta name="author" content="Mohotarema Rashid">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128200;</text></svg>">
+<title>Mohotarema Rashid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --ground:   #ffffff;
+    --surface:  #ffffff;
+    --ink:      #12201d;
+    --muted:    #5d6b66;
+    --faint:    #8a968f;
+    --accent:   #0f6b57;
+    --accent-soft: #e4efea;
+    --line:     #dfe4e1;
+    --rule:     #c9d3ce;
+
+    --display: "Spectral", Georgia, "Times New Roman", serif;
+    --body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    --measure: 68ch;
+  }
+
+
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 4rem;
+  }
+
+  /* ---------- header ---------- */
+  .masthead {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .monogram {
+    width: 124px;
+    height: 124px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--surface);
+    display: grid;
+    place-items: center;
+    font-family: var(--display);
+    font-size: 2.1rem;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+  }
+  .monogram img { width: 100%; height: 100%; object-fit: cover; }
+
+  .masthead-text { min-width: 15rem; flex: 1; }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(2rem, 5vw, 2.7rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.4rem;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    color: var(--muted);
+    font-size: 0.98rem;
+    margin: 0 0 0.85rem;
+    text-wrap: balance;
+  }
+
+  .linkrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.01em;
+  }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ---------- sections ---------- */
+  section { margin-top: 3rem; }
+
+  h2 {
+    font-family: var(--display);
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  h3 {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+    margin: 2rem 0 0.9rem;
+  }
+  section > h3:first-of-type { margin-top: 0; }
+
+  p { margin: 0 0 1rem; max-width: var(--measure); }
+  p:last-child { margin-bottom: 0; }
+
+  /* ---------- entry list (education / experience) ---------- */
+  .entries { display: flex; flex-direction: column; gap: 1.6rem; }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 0 1.5rem;
+    align-items: baseline;
+  }
+
+  .entry-when {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--faint);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.28rem;
+  }
+
+  .entry-role {
+    font-weight: 600;
+    font-size: 1.02rem;
+    line-height: 1.4;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .entry-where {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin: 0.05rem 0 0.45rem;
+  }
+
+  .entry-body { margin: 0; max-width: var(--measure); font-size: 0.95rem; }
+  .entry-body + .entry-body { margin-top: 0.5rem; }
+
+  /* ---------- publications ---------- */
+  ol.pubs {
+    list-style: none;
+    counter-reset: pub;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  ol.pubs li {
+    counter-increment: pub;
+    display: grid;
+    grid-template-columns: 2.1rem 1fr;
+    gap: 0 0.5rem;
+    font-size: 0.95rem;
+    max-width: var(--measure);
+  }
+  ol.pubs li::before {
+    content: counter(pub) ".";
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--faint);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.22rem;
+  }
+  .venue { font-style: italic; }
+  ol.pubs strong { font-weight: 600; }
+  .note {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 0.08rem 0.4rem;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ---------- projects ---------- */
+  .projects { display: flex; flex-direction: column; gap: 1.9rem; }
+  .project-name {
+    font-family: var(--display);
+    font-size: 1.12rem;
+    font-weight: 600;
+    margin: 0 0 0.2rem;
+  }
+  .project-kicker {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--faint);
+    letter-spacing: 0.04em;
+    margin: 0 0 0.5rem;
+  }
+  .project-body { margin: 0 0 0.55rem; font-size: 0.95rem; max-width: var(--measure); }
+
+  /* a readout of real measured results — the numbers these projects are judged on */
+  .readout {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    border-left: 2px solid var(--accent);
+    padding: 0.15rem 0 0.15rem 0.8rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  /* ---------- contact ---------- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 0.55rem 1.5rem;
+    font-size: 0.95rem;
+    align-items: baseline;
+  }
+  .contact-label {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--faint);
+  }
+
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--faint);
+  }
+
+  @media (max-width: 34rem) {
+    .entry, .contact-grid { grid-template-columns: 1fr; gap: 0.15rem; }
+    .entry-when { padding-top: 0; }
+    .page { padding-top: 2.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <div class="monogram">
+        <img src="photo.jpg" alt="Mohotarema Rashid" width="512" height="512">
+      </div>
+    <div class="masthead-text">
+      <h1>Mohotarema Rashid</h1>
+      <p class="standfirst">Data Science Researcher and Teaching Fellow &middot; University of North Texas</p>
+      <nav class="linkrow">
+        <a href="mailto:mohotaremarshid@my.unt.edu">Email</a>
+        <a href="https://github.com/Rashidnira">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=nRuB2_4AAAAJ&amp;hl=en">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/mohotarema-rashid-73a046a6/">LinkedIn</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am Mohotarema Rashid, originally from Bangladesh. I am a Ph.D. candidate in Information Science at the University of North Texas, specializing in Data Science. I expect to graduate in Fall 2026.</p>
+    <p>My research uses large language models (LLMs), natural language processing (NLP), and behavioral theory to study financial misinformation and investor behavior. My background is in finance, and I previously worked as an Assistant Professor of Finance. I bring strong computational skills to interdisciplinary research connecting finance, AI, and social science.</p>
+    <p>I now teach data visualization at UNT using Microsoft Fabric, Power BI, and Tableau.</p>
+    <p>I am seeking remote postdoctoral positions starting after graduation and research consulting roles. In these roles, I aim to apply my quantitative background to analyze large, heterogeneous datasets and turn findings into actionable insights.</p>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="entries">
+
+      <div class="entry">
+        <div class="entry-when">Expected 2026</div>
+        <div>
+          <p class="entry-role">Ph.D., Information Science</p>
+          <p class="entry-where">University of North Texas, Denton, TX &middot; GPA 4.00 / 4.00</p>
+          <p class="entry-body">Concentration in Data Science. Dissertation on financial misinformation detection using large language models and behavioral reasoning theory.</p>
+          <p class="entry-body">Coursework: Big Data Analytics, Analysis Tools &amp; Techniques, Data Visualization, NLP in Linguistics, Applied Machine Learning, Research Methods.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-when">2015</div>
+        <div>
+          <p class="entry-role">Master of Business Administration (MBA), Finance</p>
+          <p class="entry-where">University of Dhaka, Bangladesh &middot; GPA 3.46 / 4.00</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-when">2014</div>
+        <div>
+          <p class="entry-role">Bachelor of Business Administration (BBA), Finance</p>
+          <p class="entry-where">University of Dhaka, Bangladesh &middot; GPA 3.45 / 4.00</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <h3>Teaching &amp; Research</h3>
+    <div class="entries">
+
+      <div class="entry">
+        <div class="entry-when">Fall 2026</div>
+        <div>
+          <p class="entry-role">Instructor of Record — Data Analysis and Visualization</p>
+          <p class="entry-where">University of North Texas</p>
+          <p class="entry-body">Teaching an in-person undergraduate course covering the full analytics workflow, from data collection and cleaning through exploratory analysis to visual communication. Assignments and applied projects use Python and Tableau.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-when">2023</div>
+        <div>
+          <p class="entry-role">Teaching Fellow (Instructor of Record), INFO 5709</p>
+          <p class="entry-where">Data Visualization and Communication &middot; University of North Texas</p>
+          <p class="entry-body">Designed and delivered a graduate course on data extraction, cleaning, transformation, and visualization for non-technical audiences.</p>
+          <p class="readout">SPOT evaluations &middot; 4.6 / 5.0 instructor &middot; 6.0 / 7.0 challenge and engagement</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-when">2021 – present</div>
+        <div>
+          <p class="entry-role">Graduate Teaching &amp; Research Assistant</p>
+          <p class="entry-where">University of North Texas</p>
+          <p class="entry-body">Supporting three faculty across courses of up to 90 students; producing lecture material, instructional video, and assessments. Guest lectures on research ethics, data literacy, and applied research methods. Mentoring undergraduate and graduate assistants through data collection, coding, and analysis for peer-reviewed publications.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <h3>Faculty &amp; Industry</h3>
+    <div class="entries">
+
+      <div class="entry">
+        <div class="entry-when">2020 – 2021</div>
+        <div>
+          <p class="entry-role">Assistant Professor of Finance</p>
+          <p class="entry-where">Bangladesh Army University of Science &amp; Technology</p>
+          <p class="entry-body">Taught Introduction to Finance, Financial Management, Portfolio Management, Insurance &amp; Risk Management, and Legal Environment of Business, plus Principles of Finance at MBA level. Advised undergraduate research and supervised capstone work.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-when">2017 – 2020</div>
+        <div>
+          <p class="entry-role">Lecturer, Department of Finance</p>
+          <p class="entry-where">Bangladesh Army University of Science &amp; Technology</p>
+          <p class="entry-body">Taught the full undergraduate finance sequence and co-taught graduate Principles of Finance; contributed to assessment design, exam writing, and course coordination.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-when">2016 – 2017</div>
+        <div>
+          <p class="entry-role">Finance Executive</p>
+          <p class="entry-where">Rangs Limited, Bangladesh</p>
+          <p class="entry-body">Managed funds and accounts-receivable portfolios; designed recurring financial dashboards and management reports for executive decision-making.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <h3>Honors, Awards &amp; Competitions</h3>
+    <div class="entries">
+
+      <div class="entry">
+        <div class="entry-when">2026</div>
+        <div>
+          <p class="entry-role">CLEF 2026 CheckThat! Lab — Co-mentor, undergraduate research teams</p>
+          <p class="entry-where">International AI fact-checking competition</p>
+          <p class="entry-body">Co-mentored three undergraduate teams in claim detection, retrieval, and verification, across the full project lifecycle from problem scoping to write-up.</p>
+          <p class="readout">Task 2 &middot; 2nd of 30 teams &nbsp;|&nbsp; Task 3 &middot; 7th of 24 &nbsp;|&nbsp; Task 1 &middot; 11th of 60</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-when">2026</div>
+        <div>
+          <p class="entry-role">TheFinAI Agent Market Arena — Participant (Agent: Fin_Analyst)</p>
+          <p class="entry-where">Live LLM trading agent competition, HuggingFace Live Challenge</p>
+          <p class="entry-body">Competed in an international live evaluation of LLM-based autonomous trading agents on real-time market data across asset classes. First place for Bitcoin, ninth for Tesla.</p>
+          <p class="readout">BTC live &middot; +18.50% return &middot; +41.04% vs. buy-and-hold &middot; 8.05 Sharpe &middot; 67% win rate</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-when">2025</div>
+        <div>
+          <p class="entry-role">Excellent Graduate Student Award (Teaching Assistant)</p>
+          <p class="entry-where">University of North Texas</p>
+          <p class="entry-body">Recognized for instructional quality, mentorship, and academic service.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-when">2021 – present</div>
+        <div>
+          <p class="entry-role">Graduate Academic Excellence</p>
+          <p class="entry-where">University of North Texas &middot; 4.00 / 4.00 across all doctoral coursework</p>
+        </div>
+      </div>
+
+    </div>
+
+    <h3>Academic Service</h3>
+    <div class="entries">
+
+      <div class="entry">
+        <div class="entry-when">2021</div>
+        <div>
+          <p class="entry-role">Prime Residence Coordinator (Faculty in Residence)</p>
+          <p class="entry-where">Bir Protik Taramon Bibi Hall, BAUST</p>
+          <p class="entry-body">Senior faculty member responsible for the welfare, safety, and academic support of approximately 500 women residents; coordinated wellness checks and academic outreach.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-when">2019 – 2020</div>
+        <div>
+          <p class="entry-role">MBA Assistant Program Coordinator</p>
+          <p class="entry-where">Bangladesh Army University of Science &amp; Technology</p>
+          <p class="entry-body">Oversaw departmental operations including record-keeping, grade reporting, admissions compliance, and graduation auditing; co-led curriculum development and scheduling.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-when">2018 – 2019</div>
+        <div>
+          <p class="entry-role">Student Welfare Officer &amp; Student Counselor</p>
+          <p class="entry-where">Bangladesh Army University of Science &amp; Technology</p>
+          <p class="entry-body">Conducted one-to-one counseling on academic, professional, and personal matters; co-coordinated cultural programming.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <h3>Peer-Reviewed Journal Articles &amp; Proceedings</h3>
+    <ol class="pubs">
+      <li><span><strong>Rashid, M.</strong>, Hong, L., &amp; Ryan, S. (2025). Investigating fake financial news: A systematic review of trends, themes, LLM-based detection methods, and theories. <span class="venue">Aslib Journal of Information Management</span>. <a href="https://doi.org/10.1108/AJIM-08-2024-0632">doi:10.1108/AJIM-08-2024-0632</a></span></li>
+      <li><span><strong>Rashid, M.</strong>, Hong, L., Ryan, S., Malik, M., &amp; Philbrick, J. (2025). Modeling the predictors of fake financial news sharing in social media using behavioral reasoning theory: Evidence from US retail investors. <span class="venue">Proceedings of the Association for Information Science and Technology (ASIS&amp;T)</span>. <a href="https://doi.org/10.1002/pra2.1276">doi:10.1002/pra2.1276</a></span></li>
+      <li><span>Ryan, S. E., <strong>Rashid, M.</strong>, &amp; Ali, I. (2023). Data-driven empirical research costing: Using scholarly literature, open government data, and formative case studies to plan projects. <span class="venue">Law Library Journal</span>, 115, 227.</span></li>
+      <li><span>Ryan, S. E., Hong, L., &amp; <strong>Rashid, M.</strong> (2023). From corpus creation to formative discovery: The power of big-data-rhetoric teams and methods. <span class="venue">Review of Communication</span>, 23(1), 38–61.</span></li>
+      <li><span><strong>Rashid, M.</strong>, &amp; Mamun, R. S. (2023). Unfolding high-frequency trading through the lens of responsible AI. <span class="venue">Proceedings of the Decision Sciences Institute Annual Conference</span>.</span></li>
+      <li><span>Ryan, S., &amp; <strong>Rashid, M.</strong> (2023). Systematic review of diversity and curriculum improvement case studies: Lessons for inclusion and research instruction in LIS programs. <span class="venue">Proceedings of the ALISE Annual Conference</span>.</span></li>
+      <li><span>Hays, K., Barrera, A., Ogbadu-Oladapo, L., Oyedare, O., Payne, J., <strong>Rashid, M.</strong>, Stanley, J., Stocker, L., Lueg, C., Twidale, M., &amp; West, R. (2022). A state-of-the-art and scoping review of embodied information behavior in shared, co-present extended reality experiences. <span class="venue">Electronic Imaging</span>, 34(12), 298-1–298-19.</span></li>
+    </ol>
+
+    <h3>Accepted &amp; Forthcoming</h3>
+    <ol class="pubs">
+      <li><span><strong>Rashid, M.</strong>, Hong, L., Hossain, T., Wang, N., Hossain, K. S. M. T., Ye, G., &amp; Ryan, S. (2026). Fin-Debate: A multi-agent LLM framework for automated fact-checking in the financial domain. <span class="venue">Information Processing &amp; Management</span> (Special issue: Trustworthy Content Governance and Safe Generative AI in the Age of Large Language Models). <span class="note">Forthcoming</span></span></li>
+      <li><span><strong>Rashid, M.</strong>, Chowdhury, I., Subat, A., Hong, L., Ye, G., &amp; Hossain, K. S. M. T. (2026). FinBench: A coverage-stratified benchmark framework for LLM-based trading agents. <span class="venue">Data and Information Management</span> (Special issue: Generative AI for Knowledge Work: Trust, Productivity, and Information Quality). <span class="note">Forthcoming</span></span></li>
+      <li><span><strong>Rashid, M.</strong>, Hong, L., Ding, J., &amp; Hossain, K. S. M. T. (2026). Fin-Analyst at FinMMEval 2026 Task 3: A live hybrid trading agent with LLM specialists and rule-based signals. In <span class="venue">Proceedings of the Conference and Labs of the Evaluation Forum (CLEF 2026)</span>. <span class="note">Forthcoming</span></span></li>
+      <li><span><strong>Rashid, M.</strong>, Baniya, N., Anik, A. S., Song, X., &amp; Hong, L. (2026). SciClaimSeekers at CheckThat! 2026: Retrieving scientific sources for social media claims with LLM reranking. In <span class="venue">Proceedings of the Conference and Labs of the Evaluation Forum (CLEF 2026)</span>. <span class="note">Forthcoming</span></span></li>
+      <li><span>Hasan, F. S., Anik, A. S., Liu, E., Song, X., <strong>Rashid, M.</strong>, &amp; Hong, L. (2026). SourceMinds at CheckThat! 2026: NLI-grounded citation auditing in a multi-agent pipeline for full fact-checking article generation. In <span class="venue">Proceedings of the Conference and Labs of the Evaluation Forum (CLEF 2026)</span>. <span class="note">Forthcoming</span></span></li>
+    </ol>
+
+    <h3>Work in Progress</h3>
+    <ol class="pubs">
+      <li><span><strong>Rashid, M.</strong> Flagging caregiver mental-health crisis in an autism-parenting community in social media. Preparing for submission to the <span class="venue">International AAAI Conference on Web and Social Media</span>.</span></li>
+    </ol>
+  </section>
+
+  <section id="projects">
+    <h2>Research Projects</h2>
+    <div class="projects">
+
+      <div>
+        <p class="project-name">FinBench — Coverage-Stratified Benchmark for LLM Trading Agents</p>
+        <p class="project-kicker">Data and Information Management, forthcoming &middot; code and data public</p>
+        <p class="project-body">A benchmark built on the observation that LLM trading agents are almost always evaluated on the same heavily-covered mega-caps. FinBench stratifies by analyst coverage instead: sixteen U.S. equities — six highly covered mega-caps and ten under-covered firms — observed daily from 2023 to 2025. Each firm-trading-day encodes ten heterogeneous sources as decision-ready signals, with news, social media, and SEC filings summarized and sentiment-scored by Qwen2.5-14B, and structured sources reduced deterministically to interpretable state labels.</p>
+        <p class="project-body"><a href="https://github.com/Rashidnira/coverage-stratified-llm-trading">github.com/Rashidnira/coverage-stratified-llm-trading</a></p>
+      </div>
+
+      <div>
+        <p class="project-name">Fin-Debate — Multi-Agent Fact-Checking for Financial Claims</p>
+        <p class="project-kicker">Information Processing &amp; Management, forthcoming</p>
+        <p class="project-body">A single LLM pass on a financial claim tends to hedge toward "half-true." Fin-Debate instead runs three analysts with opposing briefs — supportive, contradictory, and critical — independently, so none anchors on another, then has a judge synthesize their disagreement into a verdict. An iterative retrieval pipeline validates temporal alignment of evidence before any of it reaches the analysts.</p>
+        <p class="readout">300 PolitiFact financial claims (2007–2025) &middot; ~63% macro F1 &middot; ≈10 points over baseline</p>
+      </div>
+
+      <div>
+        <p class="project-name">Fin_Agent — Multilingual Financial NLP at FinEval 2026</p>
+        <p class="project-kicker">FinNLP 2026 shared task, three subtasks &middot; code public</p>
+        <p class="project-body">Task-aware systems rather than one general model: annotation-aware numeric rules combined with zero-shot Qwen2.5-32B classification for Greek financial NER; an interpretable cue-based ordinal scorer for Japanese implicit communication, which needs no LLM inference at all; and BGE-M3 retrieval with Qwen3-32B generation for multilingual financial QA over SEC filings and contemporaneous news in five languages.</p>
+        <p class="readout">Greek NER &middot; 0.9521 public F1, 4th &nbsp;|&nbsp; Japanese ICR &middot; 98.0% &nbsp;|&nbsp; Multilingual QA &middot; 0.3419 ROUGE-1</p>
+        <p class="project-body"><a href="https://github.com/Rashidnira/finagent-fineval-2026">github.com/Rashidnira/finagent-fineval-2026</a></p>
+      </div>
+
+      <div>
+        <p class="project-name">Fin_Analyst — Live Hybrid Trading Agent</p>
+        <p class="project-kicker">CLEF 2026 &middot; TheFinAI Agent Market Arena</p>
+        <p class="project-body">An autonomous agent that pairs LLM specialists with rule-based signals and trades live market data rather than a backtest. Entered in an international live challenge evaluating LLM trading agents across asset classes, where it placed first on Bitcoin.</p>
+        <p class="readout">BTC &middot; 1st place &middot; +18.50% return &middot; 8.05 Sharpe &middot; 67% win rate &nbsp;|&nbsp; TSLA &middot; 9th</p>
+      </div>
+
+      <div>
+        <p class="project-name">CheckThat! 2026 — Scientific Source Retrieval and Citation Auditing</p>
+        <p class="project-kicker">CLEF 2026 &middot; two systems, co-mentored undergraduate teams</p>
+        <p class="project-body">SciClaimSeekers retrieves the scientific sources behind social media claims using LLM reranking. SourceMinds audits citations with NLI grounding inside a multi-agent pipeline that generates full fact-checking articles. Both were developed with undergraduate research teams competing internationally.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-label">University</div>
+      <div><a href="mailto:mohotaremarshid@my.unt.edu">mohotaremarshid@my.unt.edu</a></div>
+
+      <div class="contact-label">Personal</div>
+      <div><a href="mailto:rashidnira925@gmail.com">rashidnira925@gmail.com</a></div>
+
+      <div class="contact-label">GitHub</div>
+      <div><a href="https://github.com/Rashidnira">github.com/Rashidnira</a></div>
+
+      <div class="contact-label">Scholar</div>
+      <div><a href="https://scholar.google.com/citations?user=nRuB2_4AAAAJ&amp;hl=en">Google Scholar profile</a></div>
+
+      <div class="contact-label">LinkedIn</div>
+      <div><a href="https://www.linkedin.com/in/mohotarema-rashid-73a046a6/">linkedin.com/in/mohotarema-rashid</a></div>
+
+      <div class="contact-label">Location</div>
+      <div>Denton, Texas</div>
+    </div>
+  </section>
+
+  <footer>
+    Mohotarema Rashid &middot; University of North Texas
+  </footer>
+
+</div>
+</body>
+</html>
